@@ -12,14 +12,60 @@
         }
 
 
-        .background {
-            background-image: url(./img/bg.png);
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-            min-height: 100%;
-            filter: brightness(0.7);
-        }
+       /* было:
+
+.background {
+
+  background-image: url(./img/bg.png);
+
+  background-size: cover;
+
+  background-position: center;
+
+  background-attachment: fixed;
+
+  min-height: 100%;
+
+  filter: brightness(0.7);
+
+}
+
+*/
+
+/*  фон: */
+
+.background {
+
+position: relative;   /* чтобы создать контекст для z-index */
+
+z-index: 0;
+
+min-height: 100%;
+
+}
+
+/* фиксированный фон как отдельный слой */
+
+.background::before {
+
+content: "";
+
+position: fixed;
+
+inset: 0;
+
+background-image: url(./img/bg.png);
+
+background-size: cover;
+
+background-position: center;
+
+filter: brightness(0.7);
+
+z-index: -1;          /* под контентом */
+
+}
+
 
 
         .content {
@@ -84,7 +130,7 @@
 <body>
     <div class="background">
         <div class="content">
-            <img src="./img/AllCont2.png">
+            <img src="./img/allCont2.png">
             <a class="button-map map1" href="https://maps.app.goo.gl/HkNJRGBLn3333B5Q8?g_st=ipc" target="_blank"
                 rel="noopener">
                 քարտեզ
