@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fixed Background Scroll Content</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: sans-serif;
+        }
+
+
+        .background {
+            background-image: url(./img/bg.png);
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            min-height: 100vh;
+            filter: brightness(0.7);
+        }
+
+
+        .content {
+            display: flex;
+            justify-content: center;
+            position: relative;
+
+        }
+
+        .content img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .button-map {
+            position: absolute;
+        }
+
+        .button-map {
+            width: 100px;
+            height: 30px;
+            padding: 12px;
+            color: #fff;
+            background-color: #6C8FAC;
+            border-radius: 26px;
+            display: grid;
+            text-transform: capitalize;
+
+            ;
+            place-items: center;
+        }
+
+        .map2 {
+            bottom: 17.5%;
+        }
+
+        .map1 {
+            bottom: 36.2%;
+        }
+
+        .textBlock {
+            text-align: center;
+            margin-bottom: 2rem;
+            font-size: 1rem;
+            line-height: 1.6;
+            margin-top: 100px;
+            color: #fff;
+            position: absolute;
+            top: 19%;
+            background: rgba(52, 57, 65, 0.5)
+        }
+
+        @media screen and (min-width: 1000px) {
+            .background{
+                display: none !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="background">
+        <div class="content">
+            <img src="./img/allCont2.png">
+            <a class="button-map map1" href="https://maps.app.goo.gl/HkNJRGBLn3333B5Q8?g_st=ipc" target="_blank"
+                rel="noopener">
+                քարտեզ
+            </a>
+            <a class="button-map map2" href="https://maps.google.com/?q=Սուրբ+Սարգիս+Եկեղեցի+Երևան" target="_blank"
+                rel="noopener">
+                քարտեզ
+            </a>
+            <div class="textBlock">
+                <p>
+                    Սիրով հրավիրում ենք Ձեզ կիսել մեզ հետ մեր կյանքի ամենահիշարժան օրը։<br>
+                    Հարսանիքի հանդիսավոր արարողությունները տեղի կունենան սեպտեմբերի 14-ին։
+                </p>
+            </div>
+        </div>
+    </div>
+    <script>
+        function checkScreenWidth() {
+            if (window.innerWidth > 1000) {
+                if (!document.getElementById("screen-warning")) {
+                    const warning = document.createElement("div");
+                    warning.id = "screen-warning";
+                    warning.textContent = "Խնդրում ենք բացել հրավերը Բջջային հեռախոսով 🌸";
+                    Object.assign(warning.style, {
+                        position: "fixed",
+                        top: "0",
+                        left: "0",
+                        width: "100%",
+                        padding: "15px",
+                        background: "rgba(0,0,0,0.8)",
+                        color: "white",
+                        textAlign: "center",
+                        fontSize: "1.2rem",
+                        zIndex: "9999",
+                        fontFamily: "Segoe UI, sans-serif"
+                    });
+                    document.body.appendChild(warning);
+                }
+            } else {
+                const warning = document.getElementById("screen-warning");
+                if (warning) warning.remove();
+            }
+        }
+
+        window.addEventListener("load", checkScreenWidth);
+
+        window.addEventListener("resize", checkScreenWidth);
+    </script>
+
+</body>
+
+</html>
